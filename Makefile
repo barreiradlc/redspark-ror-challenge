@@ -6,6 +6,9 @@ up:
 rspec:
 	docker compose run --rm web rspec
 
+migrate:
+	docker compose run --rm web rails db:migrate
+
 down:
 	docker compose down
  

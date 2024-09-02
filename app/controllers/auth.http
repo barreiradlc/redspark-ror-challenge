@@ -1,4 +1,9 @@
 
+@email = "aurelio_smitha@kuphal-kassulke.test"
+@password = "password"
+
+
+###
 
 # @name register
 POST http://localhost:3000/register HTTP/1.1
@@ -6,8 +11,8 @@ content-type: application/json
 
 {
   "name": "Evan Armstrong III", 
-  "email":"aurelio_smitha@kuphal-kassulke.test", 
-  "password": "password", 
+  "email":"{{email}}", 
+  "password": "{{password}}", 
   "password_confirmation": "password"
 }
 
@@ -17,6 +22,6 @@ POST http://localhost:3000/login HTTP/1.1
 content-type: application/json
 
 {  
-  "email":"aurelio_smitha@kuphal-kassulke.test", 
-  "password": "password"
+  "email":"{{email}}", 
+  "password": "{{password}}",
 }
