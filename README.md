@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Docker setup
 
-Things you may want to cover:
+> A aplicação possui toda a sua configuração nos arquivos Dockerfile & docker-compose.yml.
+> O arquivo Makefile facilita a utilização de comandos `docker compose`, sendo assim ao invés de usar `docker compose up` usará apenas `make up` por exemplo.
 
-* Ruby version
+Para executar a aplicação será necessário apenas o comando `make up` e todo o resto da mágica já está pronto para acontecer.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
