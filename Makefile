@@ -2,7 +2,10 @@ CONTAINER_NAME ?= web
  
 up:
 	docker compose up
- 
+
+rspec:
+	docker compose run --rm web rspec
+
 down:
 	docker compose down
  
