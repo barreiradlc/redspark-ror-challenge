@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_02_124727) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_02_135849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_124727) do
     t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "proponent_id"
+    t.index ["proponent_id"], name: "index_adresses_on_proponent_id", unique: true
   end
 
   create_table "phones", force: :cascade do |t|
@@ -32,6 +34,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_124727) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "proponent_id"
+    t.index ["proponent_id"], name: "index_phones_on_proponent_id"
+  end
+
+  create_table "proponents", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.date "birth_date"
+    t.bigint "adress_id", null: false
+    t.bigint "phones_id", null: false
+    t.integer "wage"
+    t.integer "inss_discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["adress_id"], name: "index_proponents_on_adress_id"
+    t.index ["phones_id"], name: "index_proponents_on_phones_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +59,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_124727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "proponents", "adresses"
+  add_foreign_key "proponents", "phones", column: "phones_id"
 end

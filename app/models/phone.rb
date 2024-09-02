@@ -5,4 +5,6 @@ class Phone < ApplicationRecord
   validates :country_code, presence: true
   validates :state_code, presence: true
   validates :number, presence: true
+
+  belongs_to :proponent
 end

@@ -6,4 +6,5 @@ class Adress < ApplicationRecord
   validates :state, presence: true
   validates :zip_code, presence: true
 
+  belongs_to :proponent
 end
