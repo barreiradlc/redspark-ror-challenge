@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
+  protect_from_forgery with: :null_session
   before_action :authorize_request, except: [:login, :register]
 
   private
