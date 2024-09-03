@@ -1,11 +1,16 @@
 class ApplicationController < ActionController::Base
-  allow_browser versions: :modern
-  protect_from_forgery with: :null_session
-  before_action :authorize_request, except: [:login, :register]
+  skip_before_action :verify_authenticity_token
+  before_action :authorize_request
 
   private
 
   def authorize_request
+    @path = request.original_fullpath
+
+    if @path == '/login' || @path == '/register'
+      return
+    end
+
     header = request.headers['Authorization']
     header = header.split(' ').last if header
     begin

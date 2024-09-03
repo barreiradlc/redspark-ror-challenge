@@ -40,6 +40,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  # config.filter_run focus: true
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
