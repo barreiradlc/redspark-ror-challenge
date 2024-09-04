@@ -6,13 +6,13 @@
 ###
 
 # @name register
-POST http://localhost:3000/register HTTP/1.1
+POST http://localhost:3000/register 
 content-type: application/json
 
 {
   "name": "Evan Armstrong III", 
-  "email":"{{email}}", 
-  "password": "{{password}}", 
+  "email": {{email}}, 
+  "password": {{password}}, 
   "password_confirmation": "password"
 }
 

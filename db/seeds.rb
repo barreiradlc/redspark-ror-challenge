@@ -4,6 +4,4 @@ require 'factory_bot_rails'
   FactoryBot.create(:proponent)
 end
 
-pp Proponent.all
-
 puts "Seed data has been generated!"

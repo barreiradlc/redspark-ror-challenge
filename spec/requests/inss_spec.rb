@@ -7,18 +7,17 @@ RSpec.describe "Insses", type: :request do
   let(:wage_fourth_range) { { wage: 6101.06 } }
   headers = nil
   
-  describe "POST inss/discount" do
+  before(:all) do
+    user = create(:user)
+    valid_credentials = { email: user.email, password: user.password }
     
-    before(:all) do
-      user = create(:user)
-      valid_credentials = { email: user.email, password: user.password }
-      
-      post '/login', params: valid_credentials
+    post '/login', params: valid_credentials
+    
+    token = JSON.parse(response.body)['token']    
+    headers = { "Authorization" => "Bearer #{token}" }
+  end
   
-      token = JSON.parse(response.body)['token']    
-      headers = { "Authorization" => "Bearer #{token}" }
-    end
-    
+  describe "POST inss/discount" do
     it "returns http success" do
       post "/inss/discount", params: wage_first_range, :headers => headers      
       

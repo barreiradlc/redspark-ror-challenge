@@ -9,6 +9,9 @@ rspec:
 migrate:
 	docker compose run --rm web rails db:migrate
 
+bundle:
+	docker compose run --rm web bundle
+
 console:
 	docker compose run --rm web rails c
 

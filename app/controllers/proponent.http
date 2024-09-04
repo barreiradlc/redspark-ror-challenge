@@ -1,0 +1,62 @@
+
+
+@email = "aurelio_smitha@kuphal-kassulke.test"
+@password = "password"
+
+###
+# @name login
+POST http://localhost:3000/login 
+content-type: application/json
+
+{  
+  "email": {{email}}, 
+  "password": {{password}}
+}
+  
+###
+# @name proponents_list
+GET http://localhost:3000/proponents
+content-type: application/json
+Authorization: Bearer {{ login.response.body.$.token }}
+
+{
+  "page": 2
+}
+
+###
+# @name proponents_insert
+POST http://localhost:3000/proponents
+content-type: application/json
+Authorization: Bearer {{ login.response.body.$.token }}
+
+{
+  "data": {
+    "name":"Chauncey Kulas Wunsch",
+    "cpf":"64514410824",
+    "birth_date":"1957-02-08",
+    "wage":"5606",
+    "inss_discount":"194",
+    "adress": {
+      "street":"Loree Square",
+      "number":"3995",
+      "neighborhood":"2456 Tamela Road",
+      "city":"Jenkinschester",
+      "state":"South Dakota",
+      "zip_code":"06453"
+    },
+    "phones": [
+      {
+        "contact_type": "personal",
+        "country_code":"+39",
+        "state_code":"85",
+        "number":"985270752"
+      },
+      {
+        "contact_type": "reference",
+        "country_code":"+90",
+        "state_code":"65",
+        "number":"926014442"
+      }
+    ]
+  }
+}

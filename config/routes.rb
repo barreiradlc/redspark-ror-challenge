@@ -16,5 +16,8 @@ Rails.application.routes.draw do
 
   post '/login', to: 'auth#login'
   post '/register', to: 'auth#register'
+  get '/proponents', to: 'proponent#index'
+  post '/proponents', to: 'proponent#create'
+
 
 end
