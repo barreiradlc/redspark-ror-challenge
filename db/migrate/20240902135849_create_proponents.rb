@@ -4,18 +4,14 @@ class CreateProponents < ActiveRecord::Migration[7.2]
       t.string :name
       t.string :cpf
       t.date :birth_date
-      t.references :adress, null: false, foreign_key: true
-      t.references :phones, null: false, foreign_key: true
       t.integer :wage
       t.integer :inss_discount
 
       t.timestamps
     end
+  end
 
-    add_column :phones, :proponent_id, :integer
-    add_index  :phones, :proponent_id
-    
-    add_column :adresses, :proponent_id, :integer
-    add_index :adresses, :proponent_id, unique: true
+  def down
+    drop_table :proponents
   end
 end

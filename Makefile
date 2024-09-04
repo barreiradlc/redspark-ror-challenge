@@ -9,6 +9,12 @@ rspec:
 migrate:
 	docker compose run --rm web rails db:migrate
 
+rollback:
+	docker compose run --rm web rails db:rollback
+
+seed:
+	docker compose run --rm web rails db:seed
+
 down:
 	docker compose down
  
