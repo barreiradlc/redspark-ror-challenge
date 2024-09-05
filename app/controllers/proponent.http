@@ -60,3 +60,13 @@ Authorization: Bearer {{ login.response.body.$.token }}
     ]
   }
 }
+
+###
+# @name proponents_report
+GET http://localhost:3000/proponents/report
+content-type: application/json
+Authorization: Bearer {{ login.response.body.$.token }}
+
+{
+  "page": 2
+}

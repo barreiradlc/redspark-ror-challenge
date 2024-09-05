@@ -60,7 +60,7 @@ RSpec.describe "Proponents", type: :request do
         
       expect(response).to have_http_status(:ok)
       expect(JSON.parse(response.body)).to  have_key('proponents')
-    end
+    end    
     
     it "returns the second page with success" do
       get "/proponents", :params => { :page => 2  },  :headers => headers      
@@ -86,6 +86,26 @@ RSpec.describe "Proponents", type: :request do
 
         expect(@records).to  eq(10)
       end
+    end
+  end
+
+  describe "GET /report" do
+    after(:all) do
+      Proponent.all.destroy_all
+    end
+
+    before(:all) do
+      60.times do
+        FactoryBot.create(:proponent)
+      end
+    end
+
+    it "returns http success" do
+      get "/proponents/report", :headers => headers      
+        
+      expect(response).to have_http_status(:ok)
+      expect(JSON.parse(response.body)).to  have_key('proponents_report')
+      expect(JSON.parse(response.body)['proponents_report'].count).to  eq(4)
     end
   end
 
